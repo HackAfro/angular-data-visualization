@@ -3,16 +3,24 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import {HttpClientModule} from '@angular/common/http';
+import {PusherService} from './pusher.service';
+import { ChartsComponent } from './charts/charts.component';
+import {ChartsModule} from 'ng2-charts';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChartsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    ChartsModule
+
   ],
-  providers: [],
+  providers: [PusherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
