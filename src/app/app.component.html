@@ -5,7 +5,7 @@
     <p>Select your age range</p>
 
     <div class="option-list">
-      <button class="option" *ngFor="let option of options; last as lastOption; index as i" (click)="takeVote(i)" [ngClass]="{selected: option.selected}"
+      <button class="option" *ngFor="let option of options; index as i" (click)="takeVote(i)" [ngClass]="{selected: option.selected}"
               [disabled]="selectedOption && selectedOption !== option.value">
         <i class="fas fa-check" *ngIf="option.selected"></i>
         {{option.label}}
