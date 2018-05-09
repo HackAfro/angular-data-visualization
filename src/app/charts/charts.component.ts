@@ -25,17 +25,15 @@ export class ChartsComponent implements OnInit {
   computeData() {
     this.chartData = Object.values(this.censusData);
     this.chartLabels = Object.keys(this.censusData);
-    // this.totalPopulation = this.getTotalPopulation();
+    this.totalPopulation = this.getTotalPopulation();
     this.under35 = Math.round(this.getPopulationUnder35());
     this.between35and60 = Math.round(this.getPopulationBetween35and60());
     this.above60 = Math.round(this.getPopulationAbove60());
   }
 
   getTotalPopulation() {
-    return Object.values(this.censusData).reduce(
-      (initVal, val) => (initVal += val),
-      0
-    );
+    const values: number[] = Object.values(this.censusData);
+    return values.reduce((defaultValue, val) => defaultValue + val, 0);
   }
 
   getPopulationUnder35() {
