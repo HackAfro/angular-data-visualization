@@ -1,15 +1,14 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {PusherService} from '../pusher.service';
-import {Option} from '../app.component';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { PusherService } from '../pusher.service';
+import { Option } from '../app.component';
 
 @Component({
   selector: 'app-charts',
   templateUrl: './charts.component.html',
-  styleUrls: ['./charts.component.scss']
+  styleUrls: ['./charts.component.scss'],
 })
 export class ChartsComponent implements OnInit {
-  constructor(private pusher: PusherService) {
-  }
+  constructor(private pusher: PusherService) {}
 
   @Input() censusData = {};
   @Output() newEntry: EventEmitter<Option> = new EventEmitter();
@@ -41,8 +40,7 @@ export class ChartsComponent implements OnInit {
     const populationUnder35 = Object.keys(this.censusData).reduce(
       (initVal, val) => {
         if (val === '14-25' || val === '25-35') {
-          initVal += this.censusData[val];
-          return initVal;
+          return initVal + this.censusData[val];
         }
         return initVal;
       },
@@ -56,8 +54,7 @@ export class ChartsComponent implements OnInit {
     const populationBetween35and60 = Object.keys(this.censusData).reduce(
       (initVal, val) => {
         if (val === '35-45' || val === '45-60') {
-          initVal += this.censusData[val];
-          return initVal;
+          return initVal + this.censusData[val];
         }
         return initVal;
       },
@@ -70,8 +67,7 @@ export class ChartsComponent implements OnInit {
     const total = this.getTotalPopulation();
     const above60 = Object.keys(this.censusData).reduce((initVal, val) => {
       if (val === '60+') {
-        initVal += this.censusData[val];
-        return initVal;
+        return initVal + this.censusData[val];
       }
       return initVal;
     }, 0);
