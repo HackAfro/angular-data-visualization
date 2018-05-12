@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   selectedOption = null;
+  message: string = '';
   options: Option[] = [
     {
       label: '14 - 25',
@@ -55,6 +56,9 @@ export class AppComponent implements OnInit {
           this.options = [...options];
           this.selectedOption = res.value;
         });
+    }
+    else{
+      this.message = "You've already placed a vote";
     }
   }
 
